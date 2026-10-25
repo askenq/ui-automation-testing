@@ -1,0 +1,102 @@
+
+======================================================================
+PAGE: Calendars
+URL: https://practice-automation.com/calendars/
+TITLE: Calendars | Practice Automation
+
+BODY TEXT:
+Skip to content
+Blog
+Calendars
+Home » Calendars
+Selecting a date from a calendar can be a little bit tricky, but you will be ahead of the pack if you use the right technique. A common practice in test automation is to use pagination. Try using pagination to select any date you choose!
+Select or enter a date
+YYYY-MM-DD
+Submit
+Learn More
+About
+© 2020-2026 - automateNow, LLC. All rights reserved.
+Go to top
+
+SELECTOR: button
+tag='button'; text='Submit'; type='submit'; id=''; name=''; class='pushbutton-wide'; placeholder=None; aria-label=None
+
+SELECTOR: input
+tag='input'; text=''; type='text'; id='g1065-1-selectorenteradate'; name='g1065-1-selectorenteradate'; class='date jp-contact-form-date grunion-field'; placeholder=''; aria-label=None
+
+SELECTOR: form
+tag='form'; text='Select or enter a date\nYYYY-MM-DD\nSubmit'; type=None; id='jp-form-d789f525b512b8c992166cfbd9a18204964b4777'; name=''; class='contact-form commentsblock jetpack-contact-form__form has-no-jetpack-form-layout is-ajax-form'; placeholder=None; aria-label='Calendars'
+
+SELECTOR: a
+tag='a'; text='Skip to content'; type=''; id='skip_link'; name=''; class='screen-reader-text skip-link'; placeholder=None; aria-label=None
+tag='a'; text=''; type=''; id=''; name=''; class='logo logo-left with-image l m px '; placeholder=None; aria-label=None
+tag='a'; text='Blog'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='Home'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='using pagination to select any date'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='Learn More'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='About'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='Go to top'; type=''; id='to-top'; name=''; class=''; placeholder=None; aria-label=None
+
+======================================================================
+PAGE: Modals
+URL: https://practice-automation.com/modals/
+TITLE: Modals | Practice Automation
+
+BODY TEXT:
+Skip to content
+Blog
+Modals
+Home » Modals
+Many websites like using modal to grab the user’s attention. A modal is a special type of dialog that is used to present the user with some information or to get data from the end user of an application. Choose from the options below to learn how to automate modals.
+IMPORTANT: Please ensure that ad blockers are turned OFF in your browser. Otherwise, you won’t see the modals.
+Click to see a simple modal.
+Simple Modal
+Click to see a modal that contains a form.
+Form Modal
+Learn More
+About
+© 2020-2026 - automateNow, LLC. All rights reserved.
+Go to top
+
+SELECTOR: button
+tag='button'; text='Simple Modal'; type='button'; id='simpleModal'; name=''; class='popmake-1318 pum-trigger'; placeholder=None; aria-label=None
+tag='button'; text='Form Modal'; type='button'; id='formModal'; name=''; class='popmake-674 pum-trigger'; placeholder=None; aria-label=None
+
+SELECTOR: a
+tag='a'; text='Skip to content'; type=''; id='skip_link'; name=''; class='screen-reader-text skip-link'; placeholder=None; aria-label=None
+tag='a'; text=''; type=''; id=''; name=''; class='logo logo-left with-image l m px '; placeholder=None; aria-label=None
+tag='a'; text='Blog'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='Home'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='learn how to automate modals'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='Learn More'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='About'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='Go to top'; type=''; id='to-top'; name=''; class=''; placeholder=None; aria-label=None
+
+======================================================================
+PAGE: Ads
+URL: https://practice-automation.com/ads/
+TITLE: Ads | Practice Automation
+
+BODY TEXT:
+Skip to content
+Blog
+Ads
+Home » Ads
+An ad will appear in 5…4…3…2…1
+Do you love watching ads!? Like them or not, ads are what help content providers cover some of the cost of providing free content to end users.
+Modals are often used to serve ads. Use this example to learn how to handle ads in test automation.
+IMPORTANT: Please make sure that ad blockers are turned off in your browser to see the ad.
+Learn More
+About
+© 2020-2026 - automateNow, LLC. All rights reserved.
+Go to top
+
+SELECTOR: a
+tag='a'; text='Skip to content'; type=''; id='skip_link'; name=''; class='screen-reader-text skip-link'; placeholder=None; aria-label=None
+tag='a'; text=''; type=''; id=''; name=''; class='logo logo-left with-image l m px '; placeholder=None; aria-label=None
+tag='a'; text='Blog'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='Home'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='how to handle ads in test automation'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='Learn More'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='About'; type=''; id=''; name=''; class=''; placeholder=None; aria-label=None
+tag='a'; text='Go to top'; type=''; id='to-top'; name=''; class=''; placeholder=None; aria-label=None
