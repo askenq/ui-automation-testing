@@ -179,9 +179,26 @@ def test_empty_form_fails_validation(modals):
 
 
 @allure.feature("Modals")
-@allure.title("После закрытия формы она больше не видна")
-def test_closed_form_is_not_visible(modals):
+@allure.title("Форма не отправляется при некорректном email")
+def test_invalid_form_is_not_submitted(modals):
     modals.open_form_modal()
-    modals.close_modal()
 
-    assert not modals.is_modal_open()
+    modals.fill_form(
+        "Alex",
+        "not-an-email",
+        "Test message",
+    )
+
+    modals.submit_form()
+
+    email = modals.driver.find_element(
+        *modals.EMAIL_INPUT
+    )
+
+    is_valid = modals.driver.execute_script(
+        "return arguments[0].checkValidity()",
+        email,
+    )
+
+    assert not is_valid
+    assert modals.is_modal_open()

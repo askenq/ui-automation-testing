@@ -4,11 +4,13 @@
 
 Проект предназначен для автоматического тестирования веб-страниц с помощью Selenium и Pytest.
 
-Проверяются три страницы сайта Practice Automation:
+Основные страницы сайта Practice Automation:
 
-- **Calendars** — работа с полем даты и проверка корректности введённых значений.
-- **Modals** — открытие и закрытие модальных окон, заполнение формы и проверка валидации.
-- **Ads** — появление рекламного окна, проверка его содержимого и закрытие.
+- **Calendars** — проверка поля даты и валидации введённых значений.
+- **Modals** — проверка открытия и закрытия модальных окон, заполнения формы и валидации.
+- **Ads** — проверка появления и закрытия рекламного окна.
+
+Дополнительно проверяется страница Form Fields: Selenium получает список инструментов из раздела Automation Tools и заполняет им поле Message.
 
 ## Используемые технологии
 
@@ -26,18 +28,24 @@ olimp/
 │   ├── __init__.py
 │   ├── ads_page.py
 │   ├── calendars_page.py
+│   ├── form_fields_page.py
 │   └── modals_page.py
 ├── tests/
 │   ├── __init__.py
 │   ├── test_ads.py
 │   ├── test_calendars.py
+│   ├── test_form_fields.py
 │   ├── test_modals.py
 │   ├── test_pages_smoke.py
 │   └── test_setup.py
 ├── utils/
+│   ├── __init__.py
+│   ├── check_calendar_submit.py
+│   └── inspect_pages.py
 ├── conftest.py
 ├── pytest.ini
 ├── requirements.txt
+├── .gitignore
 └── README.md
 ```
 
@@ -65,50 +73,51 @@ olimp/
 
 ## Запуск тестов
 
-Для запуска всех тестов выполните:
+Запуск всех тестов:
 
 ```powershell
 python -m pytest -v
 ```
 
-Для запуска тестов отдельной страницы:
+Запуск тестов отдельных страниц:
 
 ```powershell
 python -m pytest tests/test_calendars.py -v
 python -m pytest tests/test_modals.py -v
 python -m pytest tests/test_ads.py -v
+python -m pytest tests/test_form_fields.py -v
 ```
 
 ## Allure-отчёт
 
-Запуск тестов с сохранением результатов:
+Запустите тесты с сохранением результатов:
 
 ```powershell
 python -m pytest --alluredir=allure-results
 ```
 
-Создание HTML-отчёта:
+Создайте HTML-отчёт:
 
 ```powershell
 allure generate allure-results --clean -o allure-report
 ```
 
-Открытие отчёта:
+Откройте отчёт:
 
 ```powershell
 allure open allure-report
 ```
 
-Для работы Allure CLI необходима Java.
+Для работы Allure CLI необходима установленная Java.
 
 ## Результаты тестирования
 
-При последнем полном запуске Pytest успешно завершились 38 тестов.
+Последний полный запуск Pytest: **39 passed**.
 
-Allure-отчёт подтвердил успешное выполнение всех 38 тестов.
+Все тесты завершились успешно. Для просмотра подробных результатов используйте Allure-отчёт.
 
 ## Архитектура
 
-В проекте используется Page Object Model (POM). Логика взаимодействия со страницами находится в каталоге `pages`, а тесты расположены в каталоге `tests`.
+В проекте используется Page Object Model (POM). Классы для взаимодействия со страницами находятся в каталоге `pages`, а автоматические тесты — в каталоге `tests`.
 
-Общие настройки Selenium и обработка результатов выполнения тестов находятся в `conftest.py`.
+Общие настройки Selenium, фикстура браузера и прикрепление скриншотов при ошибках находятся в `conftest.py`.

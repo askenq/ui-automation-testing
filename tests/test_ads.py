@@ -1,7 +1,8 @@
+import time
+
 import allure
 import pytest
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 
 from pages.ads_page import AdsPage
 
@@ -21,9 +22,10 @@ def test_ads_page_opens(ads):
 
 
 @allure.feature("Ads")
-@allure.title("На странице есть описание обратного отсчёта")
+@allure.title("На странице отображается описание обратного отсчёта")
 def test_countdown_is_displayed(ads):
     body = ads.driver.find_element(By.TAG_NAME, "body").text
+
     assert "An ad will appear" in body
 
 
@@ -31,14 +33,16 @@ def test_countdown_is_displayed(ads):
 @allure.title("Рекламное окно появляется после ожидания")
 def test_ad_appears(ads):
     ad = ads.wait_for_ad()
+
     assert ad.is_displayed()
     assert ad.text.strip() == "I am an ad."
 
 
 @allure.feature("Ads")
-@allure.title("Рекламное окно содержит текст")
+@allure.title("Рекламное окно содержит ожидаемый текст")
 def test_ad_has_expected_text(ads):
     ad = ads.wait_for_ad()
+
     assert "I am an ad." in ad.text
 
 
@@ -62,13 +66,17 @@ def test_ad_can_be_closed(ads):
 
 
 @allure.feature("Ads")
-@allure.title("После закрытия рекламное окно скрыто")
+@allure.title("Контейнер рекламы скрывается после закрытия")
 def test_ad_container_is_hidden_after_close(ads):
     ads.wait_for_ad()
     ads.close_ad()
 
     containers = ads.driver.find_elements(*ads.ACTIVE_AD)
-    assert all(not element.is_displayed() for element in containers)
+
+    assert all(
+        not container.is_displayed()
+        for container in containers
+    )
 
 
 @allure.feature("Ads")
@@ -78,46 +86,43 @@ def test_page_remains_open_after_ad_close(ads):
     ads.close_ad()
 
     assert "Ads" in ads.driver.title
-    assert ads.driver.find_element(By.TAG_NAME, "body").is_displayed()
+    assert ads.driver.find_element(
+        By.TAG_NAME, "body"
+    ).is_displayed()
 
 
 # Негативные тесты
 
 
 @allure.feature("Ads")
-@allure.title("Несуществующий рекламный текст не находится")
-def test_nonexistent_ad_text_is_not_found(ads):
-    ads.wait_for_ad()
+@allure.title("В рекламном окне отсутствует посторонний текст")
+def test_wrong_ad_text_is_not_displayed(ads):
+    ad = ads.wait_for_ad()
 
-    elements = ads.driver.find_elements(
-        By.XPATH,
-        "//*[normalize-space(.)='This advertisement does not exist']",
-    )
-
-    assert not any(element.is_displayed() for element in elements)
+    assert "This is not an advertisement." not in ad.text
 
 
 @allure.feature("Ads")
-@allure.title("Несуществующая кнопка закрытия не находится")
-def test_nonexistent_close_button_is_not_found(ads):
-    ads.wait_for_ad()
-
-    elements = ads.driver.find_elements(
-        By.ID,
-        "nonexistent-ad-close-button",
-    )
-
-    assert len(elements) == 0
-
-
-@allure.feature("Ads")
-@allure.title("Рекламное окно не остаётся открытым после закрытия")
-def test_ad_is_not_visible_after_close(ads):
+@allure.title("Кнопка закрытия скрывается после закрытия рекламы")
+def test_close_button_is_hidden_after_ad_close(ads):
     ads.wait_for_ad()
     ads.close_ad()
 
-    WebDriverWait(ads.driver, 5).until(
-        lambda driver: not ads.is_ad_visible()
+    buttons = ads.driver.find_elements(*ads.AD_CLOSE)
+
+    assert not any(
+        button.is_displayed()
+        for button in buttons
     )
+
+
+@allure.feature("Ads")
+@allure.title("Закрытая реклама не появляется повторно")
+def test_ad_does_not_reopen_after_close(ads):
+    ads.wait_for_ad()
+    ads.close_ad()
+
+    # Проверяем, что в течение двух секунд реклама не появляется снова.
+    time.sleep(2)
 
     assert not ads.is_ad_visible()
